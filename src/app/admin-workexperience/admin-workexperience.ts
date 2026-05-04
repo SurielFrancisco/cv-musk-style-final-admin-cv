@@ -21,7 +21,7 @@ export class AdminWorkexperience {
     this.workExperienceService.getWorkExperience().snapshotChanges().pipe(
       map(changes =>
         changes.map(c =>
-          ({ id: c.payload.doc.id, ...c.payload.doc.data() })
+          ({ ...c.payload.doc.data(), id: c.payload.doc.id })
         )
       )
     ).subscribe(data => {
@@ -34,6 +34,7 @@ export class AdminWorkexperience {
     console.log(this.myWorkExperience);
     this.workExperienceService.createWorkExperience(this.myWorkExperience).then(() => {
       console.log('Created new item successfully!');
+      this.myWorkExperience = new WorkExperienceModel();
     });
   }
 

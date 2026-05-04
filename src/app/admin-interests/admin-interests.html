@@ -1,1 +1,19 @@
-<p>admin-interests works!</p>
+<div class ="container color-dark">
+    <div class = "col">
+        <p>interests items</p>
+    </div>
+</div>
+<div class ="container color-ligth">
+    <div class = "col">
+        <form>
+          <input type="text" class="txt" name="inter" placeholder="interest (e.g. Programming)" [(ngModel)]= "myInterest.inter"> <br>
+          <input type="button" class ="btn" value="{{ btntxt }}" (click)="agregarItem()">
+        </form>
+    </div>
+    <div class = "col">
+     <p class="life-container" *ngFor="let item of interestsList;">
+       <input type="button" class ="btn" value="delete" (click)='deleteItem(item.id)'>
+       {{item.inter}}
+     </p>
+    </div>
+</div>

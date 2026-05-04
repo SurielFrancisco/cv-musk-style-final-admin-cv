@@ -13,6 +13,7 @@ import { AdminLanguages } from './admin-languages/admin-languages';
 import { AdminSkills } from './admin-skills/admin-skills';
 import { AdminWorkexperience } from './admin-workexperience/admin-workexperience';
 import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { environment } from '../environments/environment';
 
 @NgModule({
@@ -31,6 +32,7 @@ import { environment } from '../environments/environment';
     FormsModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFirestoreModule,
   ],
   providers: [
   ],

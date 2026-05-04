@@ -1,1 +1,25 @@
-<p>admin-header works!</p>
+<div class ="container color-dark">
+    <div class = "col">
+        <p>header profile items</p>
+    </div>
+</div>
+<div class ="container color-ligth">
+    <div class = "col">
+        <form>
+          <input type="text" class="txt" name="name" placeholder="name" [(ngModel)]= "myHeader.name"> <br>
+          <input type="text" class="txt" name="email" placeholder="email" [(ngModel)]= "myHeader.email"><br>
+          <input type="text" class="txt" name="goalLife" placeholder="life goal" [(ngModel)]= "myHeader.goalLife"><br>
+          <input type="text" class="txt" name="location" placeholder="location" [(ngModel)]= "myHeader.location"><br>
+          <input type="text" class="txt" name="phoneNumber" placeholder="phone number" [(ngModel)]= "myHeader.phoneNumber"><br>
+          <input type="text" class="txt" name="photoUrl" placeholder="photo url" [(ngModel)]= "myHeader.photoUrl"><br>
+          <input type="text" class="txt" name="socialNetwork" placeholder="social network (@handle)" [(ngModel)]= "myHeader.socialNetwork"><br>
+          <input type="button" class ="btn" value="{{ btntxt }}" (click)="agregarItem()">
+        </form>
+    </div>
+    <div class = "col">
+     <p class="life-container" *ngFor="let item of headerList;">
+       <input type="button" class ="btn" value="delete" (click)='deleteItem(item.id)'>
+       {{item.name}} - {{item.email}}
+     </p>
+    </div>
+</div>

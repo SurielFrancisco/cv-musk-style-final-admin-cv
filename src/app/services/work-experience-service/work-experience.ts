@@ -21,11 +21,12 @@ export class WorkExperience {
   }
 
   createWorkExperience(myJob: WorkExperienceModel): any {
-    return this.workExperienceRef.add({ ...myJob });
+    const { id, ...data } = myJob;
+    return this.workExperienceRef.add({ ...data });
   }
 
   deleteWorkExperience(id?: string): Promise<void> {
-    return this.workExperienceRef.doc(id).delete();
+    return this.workExperienceRef.ref.doc(id).delete();
   }
 
 }

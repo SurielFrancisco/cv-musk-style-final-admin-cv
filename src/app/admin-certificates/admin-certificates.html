@@ -1,1 +1,21 @@
-<p>admin-certificates works!</p>
+<div class ="container color-dark">
+    <div class = "col">
+        <p>certificates items</p>
+    </div>
+</div>
+<div class ="container color-ligth">
+    <div class = "col">
+        <form>
+          <input type="text" class="txt" name="name" placeholder="name (e.g. Scrum Certified)" [(ngModel)]= "myCertificate.name"> <br>
+          <input type="text" class="txt" name="provider" placeholder="provider (e.g. SCRUMstudy)" [(ngModel)]= "myCertificate.provider"><br>
+          <input type="text" class="txt" name="year" placeholder="year (e.g. 2025)" [(ngModel)]= "myCertificate.year"><br>
+          <input type="button" class ="btn" value="{{ btntxt }}" (click)="agregarItem()">
+        </form>
+    </div>
+    <div class = "col">
+     <p class="life-container" *ngFor="let item of certificatesList;">
+       <input type="button" class ="btn" value="delete" (click)='deleteItem(item.id)'>
+       {{item.name}} - {{item.provider}} - {{item.year}}
+     </p>
+    </div>
+</div>

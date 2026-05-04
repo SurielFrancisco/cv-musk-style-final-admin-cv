@@ -1,1 +1,20 @@
-<p>admin-languages works!</p>
+<div class ="container color-dark">
+    <div class = "col">
+        <p>languages items</p>
+    </div>
+</div>
+<div class ="container color-ligth">
+    <div class = "col">
+        <form>
+          <input type="text" class="txt" name="language" placeholder="language (e.g. English)" [(ngModel)]= "myLanguage.language"> <br>
+          <input type="text" class="txt" name="level" placeholder="level (e.g. Native)" [(ngModel)]= "myLanguage.level"><br>
+          <input type="button" class ="btn" value="{{ btntxt }}" (click)="agregarItem()">
+        </form>
+    </div>
+    <div class = "col">
+     <p class="life-container" *ngFor="let item of languagesList;">
+       <input type="button" class ="btn" value="delete" (click)='deleteItem(item.id)'>
+       {{item.language}} - {{item.level}}
+     </p>
+    </div>
+</div>

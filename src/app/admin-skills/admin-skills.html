@@ -1,1 +1,20 @@
-<p>admin-skills works!</p>
+<div class ="container color-dark">
+    <div class = "col">
+        <p>skills items</p>
+    </div>
+</div>
+<div class ="container color-ligth">
+    <div class = "col">
+        <form>
+          <input type="text" class="txt" name="skill" placeholder="skill (e.g. Web programming)" [(ngModel)]= "mySkill.skill"> <br>
+          <input type="text" class="txt" name="percentage" placeholder="percentage (e.g. 90%)" [(ngModel)]= "mySkill.percentage"><br>
+          <input type="button" class ="btn" value="{{ btntxt }}" (click)="agregarItem()">
+        </form>
+    </div>
+    <div class = "col">
+     <p class="life-container" *ngFor="let item of skillsList;">
+       <input type="button" class ="btn" value="delete" (click)='deleteItem(item.id)'>
+       {{item.skill}} - {{item.percentage}}
+     </p>
+    </div>
+</div>
