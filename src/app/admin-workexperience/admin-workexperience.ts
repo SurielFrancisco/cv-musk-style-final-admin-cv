@@ -16,6 +16,7 @@ export class AdminWorkexperience {
   goalText: string = "";
   workExperience: WorkExperienceModel[] = [];
   myWorkExperience: WorkExperienceModel = new WorkExperienceModel();
+  acomplishmentsInput: string = "";
   
   constructor(public workExperienceService: WorkExperience) {
     this.workExperienceService.getWorkExperience().snapshotChanges().pipe(
@@ -31,10 +32,17 @@ export class AdminWorkexperience {
   }
 
   agregarJob() {
+    if (this.acomplishmentsInput.trim() !== '') {
+        this.myWorkExperience.acomplishments = this.acomplishmentsInput.split(',').map(s => s.trim());
+    } else {
+        this.myWorkExperience.acomplishments = [];
+    }
+    
     console.log(this.myWorkExperience);
     this.workExperienceService.createWorkExperience(this.myWorkExperience).then(() => {
       console.log('Created new item successfully!');
       this.myWorkExperience = new WorkExperienceModel();
+      this.acomplishmentsInput = "";
     });
   }
 
