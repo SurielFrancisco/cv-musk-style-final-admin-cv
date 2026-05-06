@@ -17,18 +17,37 @@
           <input type="text" class="txt" name="location" placeholder="location (city, country)" [(ngModel)]= "myWorkExperience.location"><br>
           <input type="text" class="txt" name="position" placeholder="position" [(ngModel)]= "myWorkExperience.position"><br>
           <input type="text" class="txt" name="company" placeholder="company" [(ngModel)]= "myWorkExperience.company"><br>
-          <input type="text" class="txt" name="accomplishments" placeholder="acomplishments" [(ngModel)]= "myWorkExperience.acomplishments"><br>
+          
+          <div style="display: flex; gap: 0.5rem; width: 100%;">
+            <input type="text" class="txt" style="flex: 1;" name="singleAcomplishment" placeholder="acomplishment" [(ngModel)]="singleAcomplishment">
+            <input type="button" class="btn btn-secondary" value="Add" (click)="addAcomplishment()">
+          </div>
+
+          <div class="capsules-container" *ngIf="myWorkExperience.acomplishments && myWorkExperience.acomplishments.length > 0">
+            <span class="capsule" *ngFor="let acc of myWorkExperience.acomplishments; let i = index">
+              {{acc}}
+              <button type="button" class="capsule-delete" (click)="removeAcomplishment(i)">×</button>
+            </span>
+          </div>
+          <br>
 
           <input type="button" class ="btn" value="{{ btntxt }}" (click)="agregarJob()">
         </form>
     </div>
 
     <div class = "col">
-     <p class="life-container" *ngFor="let job of workExperience;">
+     <div class="life-container" style="flex-direction: column; align-items: stretch;" *ngFor="let job of workExperience;">
 
-       <input type="button" class ="btn" value="delete" (click)='deleteJob(job.id)'>
-       {{job.company}} - {{job.position}}
-       </p>
+       <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+         <span><strong>{{job.company}}</strong> - {{job.position}}</span>
+         <input type="button" class ="btn" value="delete" (click)='deleteJob(job.id)'>
+       </div>
+
+       <div class="capsules-container" *ngIf="job.acomplishments && job.acomplishments.length > 0">
+         <span class="capsule" *ngFor="let acc of job.acomplishments">{{acc}}</span>
+       </div>
+
+     </div>
 
     </div>
 
